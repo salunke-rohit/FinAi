@@ -30,11 +30,19 @@ export const registerUser = async (req, res) => {
       password: hashedPassword,
     });
 
+    // Safe user object (don't send password)
+    const safeUser = {
+      id: user._id,
+      name: user.name,
+      email: user.email,
+    };
+
     res.status(201).json({
       success: true,
       message: "User Registered Successfully",
-      user,
+      user: safeUser,
     });
+
   } catch (error) {
     res.status(500).json({
       success: false,
@@ -75,12 +83,20 @@ export const loginUser = async (req, res) => {
       }
     );
 
+    // Safe user object (don't send password)
+    const safeUser = {
+      id: user._id,
+      name: user.name,
+      email: user.email,
+    };
+
     res.status(200).json({
       success: true,
       message: "Login Successful",
       token,
-      user,
+      user: safeUser,
     });
+
   } catch (error) {
     res.status(500).json({
       success: false,
