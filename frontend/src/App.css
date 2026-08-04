@@ -239,3 +239,216 @@ select {
 }
 
 }
+
+/* ================= HOME ================= */
+
+.home {
+  max-width: 1200px;
+  margin: auto;
+  padding: 30px 20px;
+}
+
+.home-header {
+  margin-bottom: 30px;
+}
+
+.home-header h1 {
+  font-size: 34px;
+  margin-bottom: 8px;
+}
+
+.home-header p {
+  color: #666;
+}
+
+.section {
+  background: white;
+  border-radius: 12px;
+  padding: 25px;
+  margin-bottom: 25px;
+  box-shadow: 0 5px 20px rgba(0,0,0,.05);
+}
+
+.upload-box {
+  text-align: center;
+}
+
+.upload-box p {
+  margin: 15px 0 25px;
+}
+
+.summary-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
+  gap: 20px;
+}
+
+.summary-card {
+  background: #f8fafc;
+  border-radius: 12px;
+  padding: 25px;
+  text-align: center;
+}
+
+.summary-card h3 {
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.summary-card h2 {
+  color: #2563eb;
+  font-size: 30px;
+}
+
+.chart-box {
+  text-align: center;
+}
+
+.chart-box p {
+  margin-top: 15px;
+}
+
+@media (max-width:768px){
+
+.home{
+padding:15px;
+}
+
+.home-header h1{
+font-size:28px;
+}
+
+.section{
+padding:20px;
+}
+
+}
+
+/* ================= Upload Box ================= */
+
+.upload-container{
+
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+
+padding:50px 30px;
+
+border:2px dashed #2563eb;
+
+border-radius:15px;
+
+background:#f8fbff;
+
+text-align:center;
+
+transition:.3s;
+
+}
+
+.upload-container:hover{
+
+border-color:#1d4ed8;
+
+background:#f3f8ff;
+
+}
+
+.upload-icon{
+
+font-size:60px;
+
+margin-bottom:20px;
+
+}
+
+.upload-container h2{
+
+margin-bottom:10px;
+
+}
+
+.upload-container p{
+
+color:#666;
+
+}
+
+.or-text{
+
+margin:20px 0;
+
+font-weight:600;
+
+}
+
+.supported-files{
+
+margin-top:20px;
+
+font-size:14px;
+
+color:#888;
+
+}
+
+/* Selected File */
+
+.selected-file{
+
+margin-top:25px;
+
+padding:15px;
+
+width:100%;
+
+max-width:400px;
+
+background:#eef6ff;
+
+border-radius:10px;
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+gap:15px;
+
+}
+
+.selected-file p{
+
+font-weight:500;
+
+overflow:hidden;
+
+text-overflow:ellipsis;
+
+white-space:nowrap;
+
+}
+
+.remove-btn{
+
+background:#ef4444;
+
+color:white;
+
+padding:8px 14px;
+
+border-radius:8px;
+
+font-size:14px;
+
+transition:.3s;
+
+}
+
+.remove-btn:hover{
+
+background:#dc2626;
+
+}
