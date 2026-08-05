@@ -59,12 +59,14 @@ const handleSubmit = async (e) => {
     <div className="center-screen">
       <div className="card">
         {/* Logo */}
-        <h1 className="logo">FinAI</h1>
+        <h1 className="logo">FinAI 🐳</h1>
 
         <p className="subtitle">Personal Finance Tracker</p>
 
         {/* Heading */}
-        <h2 className="heading">{isLogin ? "Login" : "Create Account"}</h2>
+        <h2 className="heading" style={{ color: "#000000" }}>
+  {isLogin ? "Login" : "Create Account"}
+</h2>
 
         {/* Form */}
         <form onSubmit={handleSubmit}>
