@@ -141,24 +141,28 @@ export const getMonthlySummary = async (req, res) => {
 };
 
 export const getRecentTransactions = async (req, res) => {
-    try {
+  try {
 
-        const recentTransactions = await Expense.find({
-            user: req.user.id
-                })
-            .select("title amount category transactionType date")
-            .sort({ date: -1 })
-            .limit(5);
+    const recentTransactions = await Expense.find({
+      user: req.user.id
+    })
+      .select(
+        "description amount category transactionType date"
+      )
+      .sort({ date: -1 })
+      .limit(10);
 
-        res.status(200).json({
-            success: true,
-            recentTransactions
-        });
+    res.status(200).json({
+      success: true,
+      recentTransactions
+    });
 
-    } catch (error) {
-        res.status(500).json({
-            success: false,
-            message: error.message
-        });
-    }
+  } catch (error) {
+
+    res.status(500).json({
+      success: false,
+      message: error.message
+    });
+
+  }
 };

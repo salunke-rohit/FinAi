@@ -8,7 +8,7 @@ const expenseSchema = new mongoose.Schema(
       required: true,
     },
 
-    title: {
+    description: {
       type: String,
       required: true,
       trim: true,
@@ -23,28 +23,38 @@ const expenseSchema = new mongoose.Schema(
     category: {
       type: String,
       required: true,
-    },
-
-    description: {
-      type: String,
-      default: "",
-    },
-
-    paymentMethod: {
-      type: String,
-      enum: ["Cash", "UPI", "Card", "Net Banking", "Wallet", "Bank Transfer"],
-      default: "UPI",
+      default: "Others",
     },
 
     transactionType: {
       type: String,
-      enum: ["Expense", "Income"],
-      default: "Expense",
+      enum: ["Income", "Expense"],
+      required: true,
+    },
+
+    balance: {
+      type: Number,
+      default: 0,
+    },
+
+    paymentMethod: {
+      type: String,
+      default: "Unknown",
+    },
+
+    bankName: {
+      type: String,
+      default: "Unknown",
+    },
+
+    sourceFile: {
+      type: String,
+      default: "",
     },
 
     date: {
       type: Date,
-      default: Date.now,
+      required: true,
     },
   },
   {
@@ -54,4 +64,4 @@ const expenseSchema = new mongoose.Schema(
 
 const Expense = mongoose.model("Expense", expenseSchema);
 
-export default Expense; 
+export default Expense;
