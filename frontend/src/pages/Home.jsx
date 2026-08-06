@@ -84,7 +84,9 @@ function Home() {
           marginBottom: "30px",
         }}
       >
-        <div style={{ width: window.innerWidth < 768 ? "500px" : "1000px" }}>
+        {/* No fixed px width / no window.innerWidth check — let it flow
+            naturally so it never overflows on phones or tablets. */}
+        <div style={{ width: "100%", maxWidth: "1000px" }}>
           <h1 style={{ color: "#2563eb" }}>Welcome, {user?.name} 🪽</h1>
           <br />
 
@@ -114,70 +116,74 @@ function Home() {
         <MonthlyBarChart />
       </section>
 
-     <div
-  style={{
-    display: "flex",
-    flexWrap: "wrap",
-    justifyContent: "center",
-    gap: "20px",
-  }}
->
-  {/* Recent Transactions */}
+      <div
+        style={{
+          display: "flex",
+          flexWrap: "wrap",
+          justifyContent: "center",
+          gap: "20px",
+        }}
+      >
+        {/* Recent Transactions */}
 
-  <div
-    onClick={() => navigate("/transactions")}
-    style={{
-      flex: "1 1 320px",
-      maxWidth: "500px",
-      minWidth: "280px",
-      background: "#fff",
-      borderRadius: "16px",
-      padding: "25px",
-      boxShadow: "0 8px 20px rgba(0,0,0,0.08)",
-      cursor: "pointer",
-      transition: "all 0.3s ease",
-      textAlign: "center",
-      border: "1px solid #e5e7eb",
-    }}
-  >
-    <div style={{ fontSize: "40px" }}>📋</div>
+        <div
+          onClick={() => navigate("/transactions")}
+          style={{
+            flex: "1 1 320px",
+            maxWidth: "500px",
+            minWidth: "280px",
+            background: "#fff",
+            borderRadius: "16px",
+            padding: "25px",
+            boxShadow: "0 8px 20px rgba(0,0,0,0.08)",
+            cursor: "pointer",
+            transition: "all 0.3s ease",
+            textAlign: "center",
+            border: "1px solid #e5e7eb",
+          }}
+        >
+          <div style={{ fontSize: "40px" }}>📋</div>
 
-    <h3 style={{ marginTop: "15px", color: "#1e3a8a" }}>
-      Recent Transactions
-    </h3>
-  </div>
+          <h3 style={{ marginTop: "15px", color: "#1e3a8a" }}>
+            Recent Transactions
+          </h3>
+        </div>
 
-  {/* FinAI Suggestions */}
+        {/* FinAI Suggestions */}
 
-  <div
-    onClick={() => navigate("/finai-report")}
-    style={{
-      flex: "1 1 320px",
-      maxWidth: "500px",
-      minWidth: "280px",
-      background: "#fff",
-      borderRadius: "16px",
-      padding: "25px",
-      boxShadow: "0 8px 20px rgba(0,0,0,0.08)",
-      cursor: "pointer",
-      transition: "all 0.3s ease",
-      textAlign: "center",
-      border: "1px solid #e5e7eb",
-    }}
-  >
-    <div style={{ fontSize: "40px" }}>🤖</div>
+        <div
+          onClick={() => navigate("/finai-report")}
+          style={{
+            flex: "1 1 320px",
+            maxWidth: "500px",
+            minWidth: "280px",
+            background: "#fff",
+            borderRadius: "16px",
+            padding: "25px",
+            boxShadow: "0 8px 20px rgba(0,0,0,0.08)",
+            cursor: "pointer",
+            transition: "all 0.3s ease",
+            textAlign: "center",
+            border: "1px solid #e5e7eb",
+          }}
+        >
+          <div style={{ fontSize: "40px" }}>🤖</div>
 
-    <h3 style={{ marginTop: "15px", color: "#1e3a8a" }}>
-      FinAI Suggestions
-    </h3>
+          <h3 style={{ marginTop: "15px", color: "#1e3a8a" }}>
+            FinAI Suggestions
+          </h3>
+        </div>
+      </div>
+      <br />
+      <br />
 
-  </div>
-</div>
-<br /><br />
-
+      {/* Was width: "1000px" inline (overriding .btn's width:100% and
+          forcing horizontal scroll on anything under 1000px wide).
+          Removed so the .btn class's responsive width:100% applies,
+          capped so it doesn't stretch edge-to-edge on large desktops. */}
       <button
         className="btn"
-        style={{ width: "1000px", color: "red" }}
+        style={{ maxWidth: "1000px", width: "100%", color: "red" }}
         onClick={handleLogout}
       >
         Logout

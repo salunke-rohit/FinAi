@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-
 import { getRecentTransactions } from "../services/transactionService";
 
 function Transactions() {
@@ -9,77 +8,113 @@ function Transactions() {
   const [transactions, setTransactions] = useState([]);
 
   useEffect(() => {
-    fetchTransactions();
+    loadTransactions();
   }, []);
 
-  const fetchTransactions = async () => {
+  const loadTransactions = async () => {
     try {
       const data = await getRecentTransactions();
-
-    setTransactions(data);
-    } catch (error) {
-      console.log(error);
+      setTransactions(data);
+    } catch (err) {
+      console.log(err);
     }
   };
 
   return (
-    <div className="home">
+    <div className="transactions-page">
 
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          marginBottom: "30px",
-        }}
-      >
+      <div className="transactions-header">
+
         <h1>Recent Transactions</h1>
 
         <button
-          className="btn" style={{ width: "700px" }}
+          className="btn"
           onClick={() => navigate("/home")}
         >
           ← Back
         </button>
+
       </div>
 
-      <table className="transaction-table">
+      <div className="table-wrapper">
 
-        <thead>
-          <tr>
-            <th>Date</th>
-            <th>Description</th>
-            <th>Category</th>
-            <th>Type</th>
-            <th>Amount</th>
-          </tr>
-        </thead>
+        <table className="transaction-table">
 
-        <tbody>
+          <thead>
 
-          {transactions.map((item) => (
+            <tr>
 
-            <tr key={item._id}>
+              <th>Date</th>
 
-              <td>
-                {new Date(item.date).toLocaleDateString()}
-              </td>
+              <th>Description</th>
 
-              <td>{item.description}</td>
+              <th>Category</th>
 
-              <td>{item.category}</td>
+              <th>Type</th>
 
-              <td>{item.transactionType}</td>
-
-              <td>₹ {item.amount}</td>
+              <th>Amount</th>
 
             </tr>
 
-          ))}
+          </thead>
 
-        </tbody>
+          <tbody>
 
-      </table>
+            {transactions.length === 0 ? (
+
+              <tr>
+
+                <td colSpan="5" className="empty-row">
+                  No Transactions Found
+                </td>
+
+              </tr>
+
+            ) : (
+
+              transactions.map((item) => (
+
+                <tr key={item._id}>
+
+                  <td>
+                    {new Date(item.date).toLocaleDateString()}
+                  </td>
+
+                  <td>{item.description}</td>
+
+                  <td>{item.category}</td>
+
+                  <td>
+
+                    <span
+                      className={
+                        item.transactionType === "Income"
+                          ? "income"
+                          : "expense"
+                      }
+                    >
+                      {item.transactionType}
+                    </span>
+
+                  </td>
+
+                  <td className="amount">
+
+                    ₹ {item.amount.toLocaleString()}
+
+                  </td>
+
+                </tr>
+
+              ))
+
+            )}
+
+          </tbody>
+
+        </table>
+
+      </div>
 
     </div>
   );
