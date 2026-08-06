@@ -89,8 +89,16 @@ function Home() {
         <div style={{ width: "100%", maxWidth: "1000px" }}>
           <h1 style={{ color: "#2563eb" }}>Welcome, {user?.name} 🪽</h1>
           <br />
-
           <p>Upload your bank statement and analyze your finances.</p>
+          <div style={{ marginTop: "20px" }}>
+            <a
+              href="/demo/FinAI_Demo_Bank_Statement.pdf"
+              download
+              className="demo-btn"
+            >
+              📄 Download Demo Bank Statement
+            </a>
+          </div>
         </div>
       </div>
 
